@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>🚦 Intelligent Traffic Management System</title>
+        <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🚦 INTELLIGENT TRAFFIC MANAGEMENT SYSTEM</h1>
+                <p>Data Structures & Algorithms Project | Real-time Emergency Vehicle Routing</p>
+            </div>
+        
+            <div class="main-grid">
+                <div class="network-section">
+                    <div class="section-header">
+                        <span class="section-icon">🗺️</span>
+                        <h3>City Traffic Network Visualization</h3>
+                    </div>
+                    <div id="network"></div>
+        
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-marker marker-emergency"></div>
+                            <span>Emergency Station</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-marker marker-landmark"></div>
+                            <span>Major Landmark</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-marker marker-source"></div>
+                            <span>Source Point</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-marker marker-destination"></div>
+                            <span>Destination Point</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-marker marker-path"></div>
+                            <span>Optimal Path</span>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="controls-panel">
+                    <div class="control-group">
+                        <h3>🚨 Route Planning</h3>
+        
+                        <div class="input-group">
+                            <label>📍 Source Intersection ID</label>
+                            <input type="number" id="source" value="0" min="0" max="44" placeholder="Enter source (0-44)">
+                        </div>
+        
+                        <div class="input-group">
+                            <label>🎯 Destination Intersection ID</label>
+                            <input type="number" id="target" value="12" min="0" max="44" placeholder="Enter destination (0-44)">
+                        </div>
+        
+                        <button class="btn btn-primary" onclick="handleSingleRoute()">
+                            🚀 Find Shortest Path
+                        </button>
+        
+                        <button class="btn btn-success" onclick="handleAllPossibleRoutes()">
+                            📊 All Possible Routes
+                        </button>
+        
+                        <button class="btn btn-warning" onclick="handleFloydWarshall()">
+                            🔄 Floyd-Warshall Algorithm
+                        </button>
+                    </div>
+        
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">Intersections</div>
+                            <div class="stat-value" id="stat-intersections">45</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Emergency Stations</div>
+                            <div class="stat-value">5</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Major Landmarks</div>
+                            <div class="stat-value">10</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Road Connections</div>
+                            <div class="stat-value" id="stat-roads">100+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="nodes-panel">
+                <div class="section-header">
+                    <span class="section-icon">📋</span>
+                    <h3>City Network Nodes</h3>
+                </div>
+                <div class="nodes-grid" id="nodesGrid"></div>
+            </div>
+        
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Calculating optimal routes...</div>
+            </div>
+        
+            <div class="results-panel" id="resultsPanel" style="display: none;">
+                <div id="results"></div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
